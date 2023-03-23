@@ -3,7 +3,6 @@ import pickle
 import pandas as pd
 import streamlit as st 
 
-from PIL import Image
 
 pickle_in = open("sk_model.pkl","rb")
 lasso=pickle.load(pickle_in)
