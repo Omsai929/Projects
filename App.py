@@ -4,6 +4,23 @@ import pandas as pd
 import streamlit as st 
 
 
+class KNNRegressor:
+    def __init__(self, k):
+        self.k = k
+        
+    def fit(self, X, y):
+        self.X = np.array(X)
+        self.y = np.array(y)
+        
+    def predict(self, X_test):
+        y_pred = []
+        for x in X_test:
+            dist = np.sqrt(np.sum((self.X - x) ** 2, axis=1))
+            idx = np.argsort(dist)[:self.k]
+            y_pred.append(np.mean(self.y[idx]))
+        return np.array(y_pred)
+
+
 pickle_in = open("scaler_sclr.pkl","rb")
 knn=pickle.load(pickle_in)
 
