@@ -4,8 +4,8 @@ import pandas as pd
 import streamlit as st 
 
 
-pickle_in = open("sk_model.pkl","rb")
-lasso=pickle.load(pickle_in)
+pickle_in = open("scaler_sclr.pkl","rb")
+knn=pickle.load(pickle_in)
 
 def welcome():
     return "Welcome All"
@@ -57,7 +57,7 @@ def Sales_Of_Retail_Store(week_id,outlet,product_identifier,department_identifie
             description: The output values
             
     """
-    prediction=lasso.predict([[week_id,outlet,product_identifier,department_identifier,category_of_product,state,day,month,year]])
+    prediction=knn.predict([[week_id,outlet,product_identifier,department_identifier,category_of_product,state,day,month,year]])
     print(prediction)
     return prediction
 
